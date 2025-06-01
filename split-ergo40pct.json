@@ -6,7 +6,7 @@
         "minStabilizer": 2,
         "controllerType": "wireless",
         "leftData": {
-            "schemeVersion": "1.1",
+            "schemeVersion": "1.2",
             "modules": {
                 "switch-00-00": {
                     "x": 1,
@@ -1172,10 +1172,10 @@
                 },
                 "padding-01": {
                     "x": 6.119999999999997,
-                    "y": 0.8999999999999999,
+                    "y": 1.031578947368421,
                     "a": 0,
-                    "width": 3,
-                    "height": 3,
+                    "width": 2.7894736842105265,
+                    "height": 2.526315789473684,
                     "row": 1,
                     "col": 0,
                     "enabled": true,
@@ -1187,7 +1187,7 @@
             "col": 7
         },
         "rightData": {
-            "schemeVersion": "1.1",
+            "schemeVersion": "1.2",
             "modules": {
                 "switch-00-00": {
                     "moduleType": "switch",
@@ -2090,9 +2090,9 @@
                     "moduleType": "encoder"
                 },
                 "trackball": {
-                    "x": 0,
-                    "y": 0,
-                    "a": -90,
+                    "x": 5,
+                    "y": 5.125,
+                    "a": -180,
                     "width": 2,
                     "height": 2,
                     "row": 6,
@@ -2160,11 +2160,11 @@
                 "padding-01": {
                     "moduleType": "padding",
                     "x": 2.229999000000003,
-                    "y": 0.8999999999999999,
+                    "y": 1.031578947368421,
                     "row": 1,
                     "col": 0,
-                    "width": 3,
-                    "height": 3,
+                    "width": 2.7894736842105265,
+                    "height": 2.526315789473684,
                     "a": 0,
                     "variant": "",
                     "enabled": true
@@ -2192,6 +2192,9 @@
         "chamferAngle": 30,
         "switchEmbankment": 0,
         "snapDirection": "horizontal",
-        "mountType": "integrated"
+        "mountType": "integrated",
+        "chamferType": "C",
+        "lowerChamferHeight": 2,
+        "cornerType": "default"
     }
 }

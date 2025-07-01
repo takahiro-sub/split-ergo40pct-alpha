@@ -14,29 +14,10 @@
             tapping-term-ms = <1000>;
         };
 
-        td_bt_selx: td_bt_selx {
-            compatible = "zmk,behavior-tap-dance";
-            label = "TD_BT_SELX";
-            #binding-cells = <0>;
-            bindings =
-                <&bt BT_SEL 0>,
-                <&bt BT_SEL 1>,
-                <&bt BT_SEL 2>,
-                <&bt BT_SEL 3>,
-                <&bt BT_SEL 4>;
-        };
-
-        td_bt_clr_all: td_bt_clr_all {
-            compatible = "zmk,behavior-tap-dance";
-            label = "TD_BT_CLR_ALL";
-            #binding-cells = <0>;
-            bindings = <&bt BT_CLR_ALL>;
-        };
-
-        ht_bt_clr_selx: ht_bt_clr_selx {
+        ht_kp: ht_kp {
             compatible = "zmk,behavior-hold-tap";
-            label = "HT_BT_CLR_SELX";
-            bindings = <&td_bt_clr_all>, <&td_bt_selx>;
+            label = "HT_KP";
+            bindings = <&kp>, <&kp>;
 
             #binding-cells = <2>;
             tapping-term-ms = <1000>;
@@ -48,10 +29,10 @@
 
         layer_0 {
             bindings = <
-&kp ESC           &kp Q         &kp W             &kp E      &kp R  &kp T  &kp LEFT_BRACKET  &kp RIGHT_BRACKET  &kp Y      &kp U  &kp I       &kp O              &kp P          &kp BACKSPACE
-&kp TAB           &kp A         &kp S             &kp D      &kp F  &kp G  &kp CAPS          &kp BACKSLASH      &kp H      &kp J  &kp K       &kp L              &kp SEMICOLON  &kp SQT
-&kp LEFT_SHIFT    &kp Z         &kp X             &kp C      &kp V  &kp B                                       &kp N      &kp M  &kp COMMA   &kp PERIOD         &kp SLASH      &kp RIGHT_SHIFT
-&kp LEFT_CONTROL  &kp LEFT_ALT  &kp LEFT_COMMAND  &kp SPACE  &to 1  &to 2  &to 3             &to 4              &kp ENTER  &to 0  &kp DELETE  &kp RIGHT_COMMAND  &kp RIGHT_ALT  &kp RIGHT_CONTROL
+&kp ESC           &kp Q         &kp W             &kp E      &kp R  &kp T  &kp LEFT_BRACKET  &kp RIGHT_BRACKET  &kp Y      &kp U  &kp I                                 &kp O              &kp P          &ht_kp DELETE BACKSPACE
+&kp TAB           &kp A         &kp S             &kp D      &kp F  &kp G  &kp CAPS          &kp BACKSLASH      &kp H      &kp J  &kp K                                 &kp L              &kp SEMICOLON  &kp SQT
+&kp LEFT_SHIFT    &kp Z         &kp X             &kp C      &kp V  &kp B                                       &kp N      &kp M  &kp COMMA                             &kp PERIOD         &kp SLASH      &kp RIGHT_SHIFT
+&kp LEFT_CONTROL  &kp LEFT_ALT  &kp LEFT_COMMAND  &kp SPACE  &to 1  &to 2  &to 3             &to 4              &kp ENTER  &to 0  &kp C_AC_NEXT_KEYBOARD_LAYOUT_SELECT  &kp RIGHT_COMMAND  &kp RIGHT_ALT  &kp RIGHT_CONTROL
             >;
         };
 
@@ -75,10 +56,10 @@
 
         layer_3 {
             bindings = <
-&trans  &none  &none  &none   &none   &none   &bt BT_PRV  &ht_bt_clr_selx 0 0  &none   &none   &none   &kp KP_NUMBER_7  &kp KP_NUMBER_8  &kp KP_NUMBER_9
-&none   &none  &none  &none   &none   &none   &bt BT_NXT  &none                &none   &none   &none   &kp KP_NUMBER_4  &kp KP_NUMBER_5  &kp KP_NUMBER_6
-&none   &none  &none  &none   &none   &none                                    &none   &none   &none   &kp KP_NUMBER_1  &kp KP_NUMBER_2  &kp KP_NUMBER_3
-&none   &none  &none  &trans  &trans  &trans  &trans      &trans               &trans  &trans  &trans  &kp KP_NUMBER_0  &none            &none
+&trans  &bt BT_SEL 0   &bt BT_SEL 1   &bt BT_SEL 2   &bt BT_SEL 3   &bt BT_SEL 4   &bt BT_PRV  &bt BT_CLR  &bt BT_CLR_ALL  &none   &none   &kp KP_NUMBER_7  &kp KP_NUMBER_8  &kp KP_NUMBER_9
+&none   &bt BT_DISC 0  &bt BT_DISC 1  &bt BT_DISC 2  &bt BT_DISC 3  &bt BT_DISC 4  &bt BT_NXT  &none       &none           &none   &none   &kp KP_NUMBER_4  &kp KP_NUMBER_5  &kp KP_NUMBER_6
+&none   &none          &none          &none          &none          &none                                  &none           &none   &none   &kp KP_NUMBER_1  &kp KP_NUMBER_2  &kp KP_NUMBER_3
+&none   &none          &none          &trans         &trans         &trans         &trans      &trans      &trans          &trans  &trans  &kp KP_NUMBER_0  &kp KP_DOT       &ht_kp DEL BACKSPACE
             >;
         };
 

@@ -29,10 +29,10 @@
 
         layer_1 {
             bindings = <
-&kp GRAVE  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp NUMBER_4  &kp N5  &kp MINUS  &kp EQUAL  &kp NUMBER_6  &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9    &kp NUMBER_0  &trans
-&trans     &none         &none         &none         &none         &none   &trans     &none      &none         &none         &none         &none           &none         &none
-&trans     &kp LG(Q)     &kp LG(W)     &none         &none         &none                         &none         &none         &none         &none           &kp UP_ARROW  &trans
-&trans     &trans        &trans        &trans        &trans        &trans  &trans     &trans     &trans        &trans        &trans        &kp LEFT_ARROW  &kp DOWN      &kp RIGHT
+&trans  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp NUMBER_4  &kp N5  &kp MINUS  &kp EQUAL  &kp NUMBER_6  &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9    &kp NUMBER_0  &trans
+&trans  &none         &none         &none         &none         &none   &trans     &kp GRAVE  &none         &none         &none         &none           &none         &none
+&trans  &kp LG(Q)     &kp LG(W)     &none         &none         &none                         &none         &none         &none         &none           &kp UP_ARROW  &trans
+&trans  &trans        &trans        &trans        &trans        &trans  &trans     &trans     &trans        &trans        &trans        &kp LEFT_ARROW  &kp DOWN      &kp RIGHT
             >;
         };
 
@@ -40,7 +40,7 @@
             bindings = <
 &trans  &kp F1  &kp F2  &kp F3  &kp F4  &kp F5  &kp F6  &kp F7  &kp F8  &kp F9  &kp F10  &kp F11  &kp F12  &trans
 &trans  &none   &none   &none   &none   &none   &none   &none   &none   &none   &none    &none    &none    &none
-&trans  &none   &none   &none   &none   &none                   &none   &none   &none    &none    &none    &none
+&trans  &none   &none   &none   &none   &none                   &none   &none   &none    &none    &none    &trans
 &none   &none   &none   &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans   &none    &none    &none
             >;
         };

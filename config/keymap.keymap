@@ -3,6 +3,22 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/pointing.h>
 
+#define SCROLL 5
+
+&msc {
+    delay-ms = <0>;
+    trigger-period-ms = <10>;
+    time-to-max-speed-ms = <0>;
+    acceleration-exponent = <0>;
+};
+
+&trackball_listener {
+    scroller {
+        layers = <SCROLL>;
+        input-processors = <&zip_xy_to_scroll_mapper>;
+    };
+};
+
 / {
     behaviors {
         ht_boot_reset: ht_boot_reset {
@@ -12,6 +28,13 @@
 
             #binding-cells = <2>;
             tapping-term-ms = <1000>;
+        };
+
+        mouse_scrl: mouse_wheel_scrl {
+            compatible = "zmk,behavior-sensor-rotate-var";
+            #sensor-binding-cells = <2>;
+            bindings = <&msc>, <&msc>;
+            tap-ms = <10>;
         };
     };
 
@@ -70,6 +93,7 @@
 &trans  &trans  &trans  &trans  &trans  &trans                  &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
             >;
+            sensor-bindings = <&mouse_scrl SCRL_DOWN SCRL_UP>, <&mouse_scrl SCRL_UP SCRL_DOWN>;
         };
     };
 };

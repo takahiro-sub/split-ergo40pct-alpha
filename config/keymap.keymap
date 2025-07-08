@@ -3,10 +3,29 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/pointing.h>
 
+/ {
+    input_processors {
+        zip_wheel_scaler: zip_wheel_scaler {
+            compatible = "zmk,input-processor-scaler";
+            #input-processor-cells = <2>;
+            type = <INPUT_EV_REL>;
+            codes = <INPUT_REL_WHEEL>;
+            track-remainders;
+        };
+        zip_hwheel_scaler: zip_hwheel_scaler {
+            compatible = "zmk,input-processor-scaler";
+            #input-processor-cells = <2>;
+            type = <INPUT_EV_REL>;
+            codes = <INPUT_REL_HWHEEL>;
+            track-remainders;
+        };
+    };
+};
+
 &trackball_listener {
     scroller {
         layers = <5>;
-        input-processors = <&zip_xy_to_scroll_mapper>;
+        input-processors = <&zip_xy_to_scroll_mapper>, <&zip_wheel_scaler 1 4>, <&zip_hwheel_scaler 1 4>;
     };
 };
 

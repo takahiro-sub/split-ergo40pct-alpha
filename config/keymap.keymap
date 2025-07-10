@@ -4,38 +4,6 @@
 #include <dt-bindings/zmk/pointing.h>
 
 / {
-    input_processors {
-        zip_wheel_scaler: zip_wheel_scaler {
-            compatible = "zmk,input-processor-scaler";
-            #input-processor-cells = <2>;
-            type = <INPUT_EV_REL>;
-            codes = <INPUT_REL_WHEEL>;
-            track-remainders;
-        };
-
-        zip_hwheel_scaler: zip_hwheel_scaler {
-            compatible = "zmk,input-processor-scaler";
-            #input-processor-cells = <2>;
-            type = <INPUT_EV_REL>;
-            codes = <INPUT_REL_HWHEEL>;
-            track-remainders;
-        };
-    };
-};
-
-
-&trackball_listener {
-    scroller {
-        layers = <5>;
-        input-processors =
-            <&zip_xy_to_scroll_mapper>,
-            <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_X_INVERT)>,
-            <&zip_wheel_scaler 1 4>,
-            <&zip_hwheel_scaler 1 4>;
-    };
-};
-
-/ {
     behaviors {
         ht_boot_reset: ht_boot_reset {
             compatible = "zmk,behavior-hold-tap";

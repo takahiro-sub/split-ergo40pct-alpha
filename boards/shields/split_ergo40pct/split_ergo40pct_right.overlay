@@ -4,6 +4,8 @@
 #include <dt-bindings/zmk/input_transform.h>
 #include "layouts.dtsi"
 
+#define SCROLL 5
+
 / {
     chosen {
         zmk,physical-layout = &physical_layout0;
@@ -50,7 +52,7 @@
         input-processors = <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_X_INVERT)>;
 
         scroll {
-            layers = <5>;
+            layers = <SCROLL>;
             input-processors =
                 <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_X_INVERT)>,
                 <&zip_xy_to_scroll_mapper>;
@@ -97,7 +99,7 @@
         spi-max-frequency = <2000000>;
         irq-gpios = <&gpio0 15 GPIO_ACTIVE_LOW>;
 
-        scroll-layers = <5>;
+        scroll-layers = <SCROLL>;
     };
 };
 

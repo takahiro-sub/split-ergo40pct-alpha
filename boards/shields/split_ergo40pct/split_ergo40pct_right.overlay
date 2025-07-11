@@ -144,6 +144,13 @@
     };
 };
 
+/ {
+    msc_input_listener: msc_input_listener {
+        status = "okay";
+        device = <&trackball>;
+    };
+};
+
 &msc_input_listener {
     snipe {
         layers = <SNIPE>;

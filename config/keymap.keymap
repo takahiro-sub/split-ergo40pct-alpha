@@ -21,7 +21,7 @@
 
 &mmv_input_listener {
     snipe {
-        layers = <SNIPE>;
+        layers = <5>;
         input-processors = <&zip_xy_scaler 1 4>;
     };
 };

@@ -146,7 +146,7 @@
 
 &msc_input_listener {
     snipe {
-        layers = <7>;
+        layers = <SNIPE>;
         input-processors = <&zip_wheel_scaler 1 4>, <&zip_hwheel_scaler 1 4>;
     };
 };

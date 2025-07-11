@@ -125,7 +125,7 @@
         layers = <SNIPE>;
         input-processors =
             <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_X_INVERT)>,
-            <&zip_xy_scaler 1 8>;
+            <&zip_xy_scaler 1 4>;
     };
     scroll {
         layers = <SCROLL>;
@@ -138,7 +138,7 @@
         input-processors =
             <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_X_INVERT)>,
             <&zip_xy_to_scroll_mapper>,
-            <&zip_wheel_scaler 1 8>, <&zip_hwheel_scaler 1 8>;
+            <&zip_wheel_scaler 1 4>, <&zip_hwheel_scaler 1 4>;
     };
 };
 

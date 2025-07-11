@@ -50,6 +50,35 @@
             ;
     };
 
+    trackball_listener: trackball_listener {
+        compatible = "zmk,input-listener";
+        device = <&trackball>;
+        input-processors = <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_X_INVERT)>;
+
+        snipe {
+            layers = <SNIPE>;
+            input-processors =
+                <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_X_INVERT)>,
+                <&zip_xy_scaler 1 4>;
+        };
+
+        scroll {
+            layers = <SCROLL>;
+            input-processors =
+                <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_X_INVERT)>,
+                <&zip_xy_scaler 1 8>,
+                <&zip_xy_to_scroll_mapper>;
+        };
+
+        scroller_snipe {
+            layers = <SCROLL_SNIPE>;
+            input-processors =
+                <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_X_INVERT)>,
+                <&zip_xy_to_scroll_mapper>,
+                <&zip_wheel_scaler 1 4>, <&zip_hwheel_scaler 1 4>;
+        };
+    };
+
 };
 
 &physical_layout0 {
@@ -115,45 +144,36 @@
     };
 };
 
-&trackball_listener {
-    status = "okay";
-    device = <&trackball>;
-    input-processors =
-            <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_X_INVERT)>;
-
-    snipe {
-        layers = <SNIPE>;
-        input-processors =
-            <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_X_INVERT)>,
-            <&zip_xy_scaler 1 4>;
-    };
-    scroll {
-        layers = <SCROLL>;
-        input-processors =
-            <&zip_xy_transform (INPUT_TRANSFORM_Y_INVERT)>,
-            <&zip_xy_to_scroll_mapper>;
-    };
-    scroller_snipe {
-        layers = <SCROLL_SNIPE>;
-        input-processors =
-            <&zip_xy_transform (INPUT_TRANSFORM_Y_INVERT)>,
-            <&zip_xy_to_scroll_mapper>,
-            <&zip_wheel_scaler 1 4>, <&zip_hwheel_scaler 1 4>;
-    };
-};
-
 / {
     msc_input_listener: msc_input_listener {
-        status = "okay";
         device = <&trackball>;
+        input-processors = <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_X_INVERT)>;
+
+        snipe {
+            layers = <SNIPE>;
+            input-processors =
+                <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_X_INVERT)>,
+                <&zip_xy_scaler 1 4>;
+        };
+
+        scroll {
+            layers = <SCROLL>;
+            input-processors =
+                <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_X_INVERT)>,
+                <&zip_xy_scaler 1 8>,
+                <&zip_xy_to_scroll_mapper>;
+        };
+
+        scroller_snipe {
+            layers = <SCROLL_SNIPE>;
+            input-processors =
+                <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_X_INVERT)>,
+                <&zip_xy_to_scroll_mapper>,
+                <&zip_wheel_scaler 1 4>, <&zip_hwheel_scaler 1 4>;
+        };
     };
 };
 
 &msc_input_listener {
-    snipe {
-        layers = <SNIPE>;
-        input-processors =
-            <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_X_INVERT)>,
-            <&zip_wheel_scaler 1 4>, <&zip_hwheel_scaler 1 4>;
-    };
+    status = "okay";
 };

@@ -97,7 +97,6 @@
 };
 
 &trackball {
-    delay-ms = <0>;
     trigger-period-ms = <10>;
     time-to-max-speed-ms = <0>;
     acceleration-exponent = <1>;

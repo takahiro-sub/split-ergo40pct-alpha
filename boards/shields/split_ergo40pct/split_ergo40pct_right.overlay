@@ -118,6 +118,13 @@
     device = <&trackball>;
 };
 
+&mmv {
+    delay-ms = <0>;
+    trigger-period-ms = <10>;
+    time-to-max-speed-ms = <0>;
+    acceleration-exponent = <1>;
+};
+
 &mmv-input-listener {
     snipe {
         layers = <SNIPE>;

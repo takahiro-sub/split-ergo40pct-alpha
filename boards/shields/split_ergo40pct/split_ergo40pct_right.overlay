@@ -96,17 +96,18 @@
     };
 };
 
-&trackball {
-    trigger-period-ms = <10>;
-    time-to-max-speed-ms = <0>;
-    acceleration-exponent = <1>;
-};
-
 &trackball_listener {
     status = "okay";
     device = <&trackball>;
-    input-processors = <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_X_INVERT)>;
+    delay-ms = <0>;
+    trigger-period-ms = <10>;
+    time-to-max-speed-ms = <0>;
+    acceleration-exponent = <1>;
 
+    snipe {
+        layers = <SNIPE>;
+        input-processors = <&zip_xy_scaler 1 16>;
+    };
     scroll {
         layers = <SCROLL>;
         input-processors =
@@ -118,9 +119,4 @@
         layers = <SCROLL_SNIPE>;
         input-processors = <&zip_xy_to_scroll_mapper>, <&zip_xy_scaler 1 16>, <&zip_xy_scaler 1 16>;
     };
-    snipe {
-        layers = <SNIPE>;
-        input-processors = <&zip_xy_scaler 1 16>;
-    };
 };
-

@@ -50,22 +50,40 @@
             ;
     };
 
+    input_processors {
+        zip_wheel_scaler: zip_wheel_scaler {
+            compatible = "zmk,input-processor-scaler";
+            #input-processor-cells = <2>;
+            type = <INPUT_EV_REL>;
+            codes = <INPUT_REL_WHEEL>;
+            track-remainders;
+        };
+        zip_hwheel_scaler: zip_hwheel_scaler {
+            compatible = "zmk,input-processor-scaler";
+            #input-processor-cells = <2>;
+            type = <INPUT_EV_REL>;
+            codes = <INPUT_REL_HWHEEL>;
+            track-remainders;
+        };
+    };
+
     trackball_listener: trackball_listener {
+        status = "okay";
         compatible = "zmk,input-listener";
         device = <&trackball>;
-        input-processors = <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_X_INVERT)>;
+        input-processors = <&zip_xy_transform 3>; // 3 = XY_SWAP | X_INVERT
 
         snipe {
             layers = <SNIPE>;
             input-processors =
-                <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_X_INVERT)>,
+                <&zip_xy_transform 3>,
                 <&zip_xy_scaler 1 4>;
         };
 
         scroll {
             layers = <SCROLL>;
             input-processors =
-                <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_X_INVERT)>,
+                <&zip_xy_transform 3>,
                 <&zip_xy_scaler 1 8>,
                 <&zip_xy_to_scroll_mapper>;
         };
@@ -73,7 +91,7 @@
         scroller_snipe {
             layers = <SCROLL_SNIPE>;
             input-processors =
-                <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_X_INVERT)>,
+                <&zip_xy_transform 3>,
                 <&zip_xy_to_scroll_mapper>,
                 <&zip_wheel_scaler 1 4>, <&zip_hwheel_scaler 1 4>;
         };
@@ -122,25 +140,6 @@
 
         snipe-layers = <SNIPE>;
         scroll-layers = <SCROLL SCROLL_SNIPE>;
-    };
-};
-
-/ {
-    input_processors {
-        zip_wheel_scaler: zip_wheel_scaler {
-            compatible = "zmk,input-processor-scaler";
-            #input-processor-cells = <2>;
-            type = <INPUT_EV_REL>;
-            codes = <INPUT_REL_WHEEL>;
-            track-remainders;
-        };
-        zip_hwheel_scaler: zip_hwheel_scaler {
-            compatible = "zmk,input-processor-scaler";
-            #input-processor-cells = <2>;
-            type = <INPUT_EV_REL>;
-            codes = <INPUT_REL_HWHEEL>;
-            track-remainders;
-        };
     };
 };
 

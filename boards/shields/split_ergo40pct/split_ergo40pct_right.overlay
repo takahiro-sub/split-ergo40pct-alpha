@@ -102,7 +102,9 @@
 
     snipe {
         layers = <SNIPE>;
-        input-processors = <&zip_xy_scaler 1 16>;
+        input-processors =
+            <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_X_INVERT)>,
+            <&zip_xy_scaler 1 16>;
     };
     scroll {
         layers = <SCROLL>;
@@ -113,6 +115,10 @@
     };
     scroller_snipe {
         layers = <SCROLL_SNIPE>;
-        input-processors = <&zip_xy_to_scroll_mapper>, <&zip_xy_scaler 1 16>, <&zip_xy_scaler 1 16>;
+        input-processors =
+            <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_X_INVERT)>,
+            <&zip_xy_to_scroll_mapper>,
+            <&zip_xy_scaler 1 16>,
+            <&zip_xy_scaler 1 16>;
     };
 };

@@ -96,6 +96,7 @@
     };
 };
 
+/ {
     input_processors {
         zip_wheel_scaler: zip_wheel_scaler {
             compatible = "zmk,input-processor-scaler";
@@ -112,6 +113,7 @@
             track-remainders;
         };
     };
+};
 
 &trackball_listener {
     status = "okay";

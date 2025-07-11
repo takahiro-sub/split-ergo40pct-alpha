@@ -4,7 +4,7 @@
 #include <dt-bindings/zmk/pointing.h>
 
 &mmv {
-    compatible = "zmk,behavior-input-two-axis"
+    compatible = "zmk,behavior-input-two-axis";
     delay-ms = <0>;
     trigger-period-ms = <10>;
     time-to-max-speed-ms = <0>;
@@ -12,7 +12,7 @@
 };
 
 &msc {
-    compatible = "zmk,behavior-input-two-axis"
+    compatible = "zmk,behavior-input-two-axis";
     delay-ms = <0>;
     trigger-period-ms = <10>;
     time-to-max-speed-ms = <0>;
@@ -20,7 +20,7 @@
 };
 
 &mmv_input_listener {
-    precision {
+    snipe {
         layers = <SNIPE>;
         input-processors = <&zip_xy_scaler 1 4>;
     };

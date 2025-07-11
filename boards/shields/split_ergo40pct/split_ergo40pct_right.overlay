@@ -113,18 +113,19 @@
     };
 };
 
-&trackball_listener {
-    status = "okay";
-    device = <&trackball>;
-    snipe {
-        layers = <SNIPE>;
-        input-processors = <&zip_xy_scaler 1 16>;
-    };
-};
-
 &trackball {
     delay-ms = <0>;
     trigger-period-ms = <10>;
     time-to-max-speed-ms = <0>;
     acceleration-exponent = <1>;
+};
+
+&trackball_listener {
+    status = "okay";
+    device = <&trackball>;
+
+    snipe {
+        layers = <SNIPE>;
+        input-processors = <&zip_xy_scaler 1 16>;
+    };
 };

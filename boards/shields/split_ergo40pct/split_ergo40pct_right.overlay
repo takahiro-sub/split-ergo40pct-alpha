@@ -152,6 +152,8 @@
 &msc_input_listener {
     snipe {
         layers = <SNIPE>;
-        input-processors = <&zip_wheel_scaler 1 4>, <&zip_hwheel_scaler 1 4>;
+        input-processors =
+            <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_X_INVERT)>,
+            <&zip_wheel_scaler 1 4>, <&zip_hwheel_scaler 1 4>;
     };
 };

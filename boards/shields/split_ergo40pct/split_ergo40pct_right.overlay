@@ -66,7 +66,7 @@
         scroller_snipe {
             layers = <7>;
             input-processors =
-                <&zip_xy_scaler 1 4>,
+                <&zip_xy_scaler 1 8>,
                 <&zip_xy_to_scroll_mapper>;
         };
     };

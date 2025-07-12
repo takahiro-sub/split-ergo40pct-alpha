@@ -66,7 +66,7 @@
         scroller_snipe {
             layers = <7>;
             input-processors =
-                <&zip_xy_scaler 1 8>,
+                <&zip_xy_scaler 1 16>,
                 <&zip_xy_to_scroll_mapper>;
         };
     };
@@ -113,7 +113,7 @@
         irq-gpios = <&gpio0 15 GPIO_ACTIVE_LOW>;
 
         snipe-layers = <5>;
-        scroll-layers = <6 7>;
+        scroll-layers = <6>;
     };
 };
 

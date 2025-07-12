@@ -6,7 +6,7 @@
 
 #define SNIPE 5
 #define SCROLL 6
-#define SCROLL_SNIPE 7
+#define SCROLL-SNIPE 7
 
 
 
@@ -70,7 +70,7 @@
         };
 
         scroller_snipe {
-            layers = <SCROLL_SNIPE>;
+            layers = <SCROLL-SNIPE>;
             input-processors =
                 <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_X_INVERT)>,
                 <&zip_xy_to_scroll_mapper>,
@@ -120,7 +120,7 @@
         irq-gpios = <&gpio0 15 GPIO_ACTIVE_LOW>;
 
         snipe-layers = <SNIPE>;
-        scroll-layers = <SCROLL SCROLL_SNIPE>;
+        scroll-layers = <SCROLL SCROLL-SNIPE>;
     };
 };
 

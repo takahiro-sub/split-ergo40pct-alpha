@@ -4,7 +4,11 @@
 #include <dt-bindings/zmk/input_transform.h>
 #include "layouts.dtsi"
 
-#define SCROLL 5
+#define SNIPE 5
+#define SCROLL 6
+#define SCROLL_SNIPE 7
+
+
 
 / {
     chosen {
@@ -51,13 +55,29 @@
         device = <&trackball>;
         input-processors = <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_X_INVERT)>;
 
+        snipe {
+            layers = <SNIPE>;
+            input-processors =
+                <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_X_INVERT)>,
+                <&zip_xy_scaler 1 4>;
+        };
+
         scroll {
             layers = <SCROLL>;
             input-processors =
                 <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_X_INVERT)>,
                 <&zip_xy_to_scroll_mapper>;
         };
+
+        scroller_snipe {
+            layers = <SCROLL_SNIPE>;
+            input-processors =
+                <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_X_INVERT)>,
+                <&zip_xy_to_scroll_mapper>,
+                <&zip_wheel_scaler 1 4>, <&zip_hwheel_scaler 1 4>;
+        };
     };
+
 };
 
 &physical_layout0 {
@@ -99,7 +119,27 @@
         spi-max-frequency = <2000000>;
         irq-gpios = <&gpio0 15 GPIO_ACTIVE_LOW>;
 
-        scroll-layers = <SCROLL>;
+        snipe-layers = <SNIPE>;
+        scroll-layers = <SCROLL SCROLL_SNIPE>;
+    };
+};
+
+/ {
+    input_processors {
+        zip_wheel_scaler: zip_wheel_scaler {
+            compatible = "zmk,input-processor-scaler";
+            #input-processor-cells = <2>;
+            type = <INPUT_EV_REL>;
+            codes = <INPUT_REL_WHEEL>;
+            track-remainders;
+        };
+        zip_hwheel_scaler: zip_hwheel_scaler {
+            compatible = "zmk,input-processor-scaler";
+            #input-processor-cells = <2>;
+            type = <INPUT_EV_REL>;
+            codes = <INPUT_REL_HWHEEL>;
+            track-remainders;
+        };
     };
 };
 
